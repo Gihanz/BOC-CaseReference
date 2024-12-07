@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    	<property name="driverClass"><value>com.ibm.db2.jcc.DB2Driver</value></property>
+    	<property name="jdbcUrl"><value>jdbc:db2://172.21.20.185:50000/WFCONFIG</value></property>
+    	<property name="user"><value>WFCONFIG</value></property>
+    	<property name="password"><value>password123$</value></property>
+			<property name="minPoolSize"><value>10</value></property>
+			<property name="maxPoolSize"><value>50</value></property>
+	</bean> -->
+	
+    <!--  EB DB  -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	 <!-- <property name="dataSource" ref ="datasource"/> -->
+		<property name="packagesToScan">
+           <array>
+              <value>com.boc.model</value>
+           </array>
+        </property>   
+		<property name="namingStrategy" ref="namingStrategy" />
+		<property name="hibernateProperties">
+			<props>			
+				<!-- <prop key="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</prop>
+				<prop key="hibernate.connection.username">WFCONFIG</prop>
+        		<prop key="hibernate.connection.password">password123$</prop>
+		        <prop key="hibernate.connection.url">jdbc:db2://172.21.20.185:50000/WFCONFIG</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>
+				tuning
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.order_inserts">true</prop>
+				<prop key="hibernate.order_updates">true</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>
+				<prop key="hibernate.connection.datasource">java:comp/env/jdbc/WFConfig</prop>
+				<!-- caching -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <!-- connection pool -->
+				<!-- <prop key="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>
+				<prop key="hibernate.c3p0.min_size">10</prop>
+				<prop key="hibernate.c3p0.max_size">20</prop>
+				<prop key="hibernate.c3p0.acquire_increment">2</prop>
+				<prop key="hibernate.c3p0.idle_test_period">3000</prop>
+				<prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.timeout">1800</prop> -->
+				<!-- temp -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="namingStrategy" class="org.hibernate.cfg.ImprovedNamingStrategy"/>
+</beans>

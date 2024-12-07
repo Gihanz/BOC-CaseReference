@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="R" class="org.apache.log4j.RollingFileAppender">
+		<param name="Append" value="True" />
+		<param name="MaxFileSize" value="5MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<!-- <param name="File" value="/fs1/IBM/BOC/CreateCase.log" /> -->
+		<param name="File" value="/fs1/IBM/BOC/logs/CreateCaseReference.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss z} - %-5p [%t] %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="C" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+
+			<param name="ConversionPattern"
+				value="%5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- DotSphere -->
+
+	<logger name="com.boc">
+		<level value="ALL" />
+	</logger>
+
+	<!-- logger name="com.docstore">
+		<level value="ALL" />
+	</logger>
+	<logger name="com.workflow">
+		<level value="ALL" />
+	</logger-->
+
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="R" />
+		<appender-ref ref="C" />
+	</root>
+</log4j:configuration>
