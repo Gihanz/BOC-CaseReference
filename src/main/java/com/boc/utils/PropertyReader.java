@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 /*
-Create By SaiMadan on Jun 23, 2016
+Create By Gihan on Jun 23, 2016
 */
 public class PropertyReader
 { 

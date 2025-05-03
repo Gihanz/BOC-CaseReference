@@ -40,7 +40,7 @@ import com.boc.service.exceptions.BSLException;
 import sun.net.www.http.HttpClient;
 
 /*
-Created By SaiMadan on Jul 1, 2016
+Created By Gihan on Jul 1, 2016
 */
 
 @Service

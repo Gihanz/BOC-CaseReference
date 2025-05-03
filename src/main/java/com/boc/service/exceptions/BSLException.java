@@ -1,6 +1,6 @@
 package com.boc.service.exceptions;
 /*
-Create By SaiMadan on Jun 21, 2016
+Create By Gihan on Jun 21, 2016
 */
 public class BSLException  extends RuntimeException {
 	public BSLException() {

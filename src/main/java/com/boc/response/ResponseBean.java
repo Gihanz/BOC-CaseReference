@@ -3,7 +3,7 @@
 package com.boc.response;
 
 /*
-Created By SaiMadan on Jul 11, 2016
+Created By Gihan on Jul 11, 2016
 */
 public class ResponseBean 
 {

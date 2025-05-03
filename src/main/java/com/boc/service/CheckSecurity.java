@@ -5,7 +5,7 @@ package com.boc.service.impl;
 import com.boc.service.exceptions.BSLException;
 
 /*
-Created By SaiMadan on Sep 20, 2016
+Created By Gihan on Sep 20, 2016
 */
 public interface CheckSecurity 
 {

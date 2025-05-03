@@ -20,7 +20,7 @@ import com.boc.service.exceptions.BSLException;
 import com.boc.utils.CripUtils;
 
 /*
-Created By SaiMadan on Jul 1, 2016
+Created By Gihan on Jul 1, 2016
 */
 @Aspect
 public class CheckSecurityAspectJointPoint 

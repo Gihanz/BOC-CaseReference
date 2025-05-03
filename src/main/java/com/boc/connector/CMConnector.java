@@ -43,7 +43,7 @@ import com.ibm.casemgmt.api.properties.CaseMgmtProperties;
 import com.ibm.casemgmt.api.properties.CaseMgmtProperty;
 
 /*
-Created By SaiMadan on Jun 27, 2016
+Created By Gihan on Jun 27, 2016
 */
 public class CMConnector 
 {
